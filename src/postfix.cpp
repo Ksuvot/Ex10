@@ -6,7 +6,8 @@
 bool isNumber(char number) {
   if ((number >= '0' && number <= '9') || number == '.')
     return true;
-  else return false;
+  else
+    return false;
 }
 
 int priority(char operation) {
@@ -52,11 +53,10 @@ std::string infix2postfix(std::string infix) {
       case '-':
       case '*':
       case '/':
-        if (stack.isEmpty() ||
-        ( priority(infix[i]) > priority(stack.get())))
+        if (stack.isEmpty() || ( priority(infix[i]) > priority(stack.get())))
           stack.push(infix[i]);
         else {
-          while(priority(infix[i]) <= priority(stack.get())) {
+          while (priority(infix[i]) <= priority(stack.get())) {
             postfix += stack.pop();
             postfix += ' ';
           }
@@ -67,7 +67,8 @@ std::string infix2postfix(std::string infix) {
         if (isNumber(infix[i]) && !isNumber(infix[ i + 1])) {
           postfix += infix[i];
           postfix += ' ';
-        } else postfix += infix[i];
+        } else
+          postfix += infix[i];
         break;
     }
   }
